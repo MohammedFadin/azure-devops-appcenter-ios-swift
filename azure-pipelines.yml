@@ -14,6 +14,17 @@ steps:
   inputs:
     forceRepoUpdate: true
 
+- task: InstallAppleCertificate@2
+  inputs:
+    certSecureFile: 'apple-dev-certificate.p12'
+    certPwd: '$(mycertpassword)' #MyAppiOSDistributionCert
+    # keychain: 'temp'
+
+- task: InstallAppleProvisioningProfile@1
+  inputs:
+    provisioningProfileLocation: 'secureFiles'
+    provProfileSecureFile: 'developmentprofileappcentermyiphone(2).mobileprovision'
+
 - task: Xcode@5
   inputs:
     actions: 'clean build'
