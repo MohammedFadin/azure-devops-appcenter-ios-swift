@@ -30,3 +30,4 @@ steps:
 - task: AppCenterTest@1
   inputs:
     appFile:
+    frameworkOption: 'xcuitest'
