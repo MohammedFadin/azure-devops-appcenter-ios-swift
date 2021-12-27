@@ -29,6 +29,11 @@ steps:
 
 - task: AppCenterTest@1
   inputs:
-    appFile:
-    frameworkOption: 'xcuitest'
+    appFile: '$(Build.ArtifactStagingDirectory)'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/sampleapp-ios-swiftUITests'
+    frameworkOption: 'xcuitest'
+    credentialsOption: 'serviceEndpoint'
+    serverEndpoint: 'appcenter-mfadin-sampleios'
+    appSlug: 'mfadin-microsoft.com/sampleios'
+    devices: 'iphon13'
+    localeOption: 'en_US'
