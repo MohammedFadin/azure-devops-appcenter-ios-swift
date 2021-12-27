@@ -26,3 +26,7 @@ steps:
     packageApp: false
     publishJUnitResults: true
     xcodeDeveloperDir: '/Applications/Xcode_13.1.app'
+
+- task: AppCenterTest@1
+  inputs:
+    appFile:
