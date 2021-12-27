@@ -39,6 +39,7 @@ steps:
     packageApp: true
     # exportPath: "$(agent.buildDirectory)/output/$(sdk)/$(configuration)"
     archivePath: "$(system.defaultworkingdirectory)/archive"
+    teamId: '${MY-APPLE-TEAMID}'
     
 - task: CopyFiles@2
   inputs:
