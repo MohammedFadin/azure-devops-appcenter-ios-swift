@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'macOS-10.15'
+  vmImage: 'macOS-latest'
 
 steps:
 - task: CocoaPods@0
@@ -25,3 +25,4 @@ steps:
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     packageApp: false
     publishJUnitResults: true
+    xcodeDeveloperDir: '/Applications/Xcode_13.1.app'
