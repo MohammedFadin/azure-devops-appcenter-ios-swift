@@ -49,10 +49,18 @@ steps:
     contents: '**/*.ipa'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
 
+- task: CmdLine@2
+  inputs:
+    script: 'ls -la $(system.defaultworkingdirectory)/archive'
+
+- task: CmdLine@2
+  inputs:
+    script: 'ls -la $(Build.ArtifactStagingDirectory)'
+    
 - task: AppCenterTest@1
   inputs:
     # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
-    appFile: '$(system.defaultworkingdirectory)/archive/*.ipa'
+    appFile: '$(system.defaultworkingdirectory)/archive/**/*.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/sampleapp-ios-swiftUITests'
     frameworkOption: 'xcuitest'
     credentialsOption: 'serviceEndpoint'
