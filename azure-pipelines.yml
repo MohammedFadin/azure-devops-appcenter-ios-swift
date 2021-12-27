@@ -26,7 +26,7 @@ steps:
     xcodeDeveloperDir: '/Applications/Xcode_13.1.app'    
     ## Packeging Specs
     packageApp: true
-    exportPath: "$(agent.buildDirectory)/output/$(sdk)/$(configuration)"
+    # exportPath: "$(agent.buildDirectory)/output/$(sdk)/$(configuration)"
     archivePath: "$(system.defaultworkingdirectory)/archive"
     
 - task: CopyFiles@2
