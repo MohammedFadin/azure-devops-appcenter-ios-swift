@@ -51,7 +51,7 @@ steps:
 
 - task: AppCenterTest@1
   inputs:
-    appFile: '$(Build.ArtifactStagingDirectory)/*.ipa'
+    appFile: '$(Build.ArtifactStagingDirectory)'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/sampleapp-ios-swiftUITests'
     frameworkOption: 'xcuitest'
     credentialsOption: 'serviceEndpoint'
