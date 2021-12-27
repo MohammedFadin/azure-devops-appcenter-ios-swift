@@ -19,7 +19,7 @@ steps:
     actions: 'clean build'
     configuration: 'Release'
     sdk: 'iphoneos'
-    xcWorkspacePath: '*.xcworkspace'
+    # xcWorkspacePath: '*.xcworkspace'
     scheme: 'sampleapp-ios-swift'
     xcodeVersion: 'specifyPath'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
