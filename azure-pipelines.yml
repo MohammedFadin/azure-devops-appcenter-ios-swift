@@ -31,3 +31,4 @@ steps:
   inputs:
     appFile:
     frameworkOption: 'xcuitest'
+    artifactsDirectory: '$(Build.ArtifactStagingDirectory)/sampleapp-ios-swiftUITests'
