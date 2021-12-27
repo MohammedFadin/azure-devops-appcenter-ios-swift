@@ -19,10 +19,10 @@ steps:
     actions: 'clean build'
     configuration: 'Release'
     sdk: 'iphoneos'
-    # xcWorkspacePath: '*.xcworkspace'
+    xcWorkspacePath: '*.xcworkspace'
     scheme: 'sampleapp-ios-swift'
     xcodeVersion: 'specifyPath'
-    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
+    # xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     packageApp: false
     publishJUnitResults: true
     xcodeDeveloperDir: '/Applications/Xcode_13.1.app'
