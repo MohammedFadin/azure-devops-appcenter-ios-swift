@@ -41,6 +41,7 @@ steps:
     archivePath: "$(system.defaultworkingdirectory)/archive"
     exportTeamId: '$(MY-APPLE-TEAMID)'
     teamId: '$(MY-APPLE-TEAMID)'
+    signingOption: default
     
 - task: CopyFiles@2
   inputs:
