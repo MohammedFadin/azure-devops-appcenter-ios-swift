@@ -22,14 +22,22 @@ steps:
     xcWorkspacePath: '*.xcworkspace'
     scheme: 'sampleapp-ios-swift'
     xcodeVersion: 'specifyPath'
-    # xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-    packageApp: false
-    publishJUnitResults: true
-    xcodeDeveloperDir: '/Applications/Xcode_13.1.app'
+    publishJUnitResults: false
+    xcodeDeveloperDir: '/Applications/Xcode_13.1.app'    
+    ## Packeging Specs
+    packageApp: true
+    exportPath: "$(agent.buildDirectory)/output/$(sdk)/$(configuration)"
+    archivePath: "$(system.defaultworkingdirectory)/archive"
+    
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: "$(system.defaultworkingdirectory)/archive"
+    contents: '**/*.ipa'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: AppCenterTest@1
   inputs:
-    appFile: '$(Build.ArtifactStagingDirectory)'
+    appFile: '$(Build.ArtifactStagingDirectory)/*.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/sampleapp-ios-swiftUITests'
     frameworkOption: 'xcuitest'
     credentialsOption: 'serviceEndpoint'
