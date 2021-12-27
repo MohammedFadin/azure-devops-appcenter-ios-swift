@@ -21,7 +21,7 @@ steps:
     sdk: 'iphoneos'
     xcWorkspacePath: '*.xcworkspace'
     scheme: 'sampleapp-ios-swift'
-    xcodeVersion: specifyPath
+    xcodeVersion: 'specifyPath'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     packageApp: false
     publishJUnitResults: true
