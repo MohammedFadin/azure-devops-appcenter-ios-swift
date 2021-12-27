@@ -1,7 +1,7 @@
-# Xcode
-# Build, test, and archive an Xcode workspace on macOS.
-# Add steps that install certificates, test, sign, and distribute an app, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/xcode
+# # Xcode
+# # Build, test, and archive an Xcode workspace on macOS.
+# # Add steps that install certificates, test, sign, and distribute an app, save build artifacts, and more:
+# # https://docs.microsoft.com/azure/devops/pipelines/languages/xcode
 
 trigger:
 - master
@@ -21,7 +21,7 @@ steps:
     sdk: 'iphoneos'
     xcWorkspacePath: '*.xcworkspace'
     scheme: 'sampleapp-ios-swift'
-    xcodeVersion: 'specifyPath'
-    xcodeDeveloperDir: '/Applications/Xcode_11.3.app'
+    xcodeVersion: 'default' # Options: 8, 9, 10, 11, 12, default, specifyPath
+    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     packageApp: false
     publishJUnitResults: true
