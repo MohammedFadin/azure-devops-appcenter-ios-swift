@@ -91,7 +91,7 @@ steps:
     
 - task: CmdLine@2
   inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Release-iphoneos'        
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'        
 
 - task: CmdLine@2
   inputs:
