@@ -39,6 +39,7 @@ steps:
     signingOption: 'manual'
     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
+    args: '-derivedDataPath $(build.artifactStagingDirectory)/DerivedData'    
 
 # - task: Xcode@5
 #   inputs:
@@ -89,3 +90,4 @@ steps:
     appSlug: 'mfadin-microsoft.com/sampleios'
     devices: 'iphon13'
     localeOption: 'en_US'
+    xcUITestBuildDirectory: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'
