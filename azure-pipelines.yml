@@ -88,7 +88,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/ipa'
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/ipa/output'
 
 
 - task: CmdLine@2
@@ -98,10 +98,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'        
-
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la /Users/runner/work/1/a/output/$(SDK)/$(Configuration)'        
 
 
 - task: AppCenterTest@1
