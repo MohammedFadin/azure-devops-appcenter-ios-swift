@@ -38,37 +38,35 @@ steps:
 
 - task: Xcode@5
   inputs:
-    actions: 'build'
+    actions: 'build-for-testing'
     scheme: 'sampleapp-ios-swift'
     sdk: 'iphoneos'
     configuration: 'Debug'
     xcWorkspacePath: '*.xcworkspace'
     xcodeVersion: 'default'
+    packageApp: false
+    signingOption: 'manual'
+    args: '-derivedDataPath $(Build.ArtifactStagingDirectory)/DerivedData'    
+
+- task: Xcode@5
+  inputs:
+    actions: 'build'
+    configuration: 'Release'
+    sdk: 'iphoneos'
+    xcWorkspacePath: '*.xcworkspace'
+    scheme: 'sampleapp-ios-swift'
+    xcodeVersion: 'default'
+    publishJUnitResults: false
+    xcodeDeveloperDir: '/Applications/Xcode_13.1.app'    
+    ## Packeging Specs
     packageApp: true
+    exportPath: "$(Build.ArtifactStagingDirectory)/release"
+    # archivePath: "$(system.defaultworkingdirectory)/archive"
+    exportTeamId: '$(MY-APPLE-TEAMID)'
+    teamId: '$(MY-APPLE-TEAMID)'
     signingOption: 'manual'
     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
-    args: '-derivedDataPath $(build.artifactStagingDirectory)/DerivedData'    
-
-# - task: Xcode@5
-#   inputs:
-#     actions: 'build'
-#     configuration: 'Release'
-#     sdk: 'iphoneos'
-#     xcWorkspacePath: '*.xcworkspace'
-#     scheme: 'sampleapp-ios-swift'
-#     xcodeVersion: 'default'
-#     publishJUnitResults: false
-#     xcodeDeveloperDir: '/Applications/Xcode_13.1.app'    
-#     ## Packeging Specs
-#     packageApp: true
-#     exportPath: "$(agent.buildDirectory)/output/$(sdk)/$(configuration)"
-#     archivePath: "$(system.defaultworkingdirectory)/archive"
-#     exportTeamId: '$(MY-APPLE-TEAMID)'
-#     teamId: '$(MY-APPLE-TEAMID)'
-#     signingOption: 'manual'
-#     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
-#     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
     
 - task: CopyFiles@2
   inputs:
@@ -99,13 +97,14 @@ steps:
 - task: AppCenterTest@1
   inputs:
     # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
-    appFile: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos/*.app'
+    appFile: '$(Build.ArtifactStagingDirectory)/release/*.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
     frameworkOption: 'xcuitest'
-    xcUITestBuildDirectory: '$(ProjectDir)/Build/Products/Debug-iphoneos'
+    xcUITestBuildDirectory: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'
     credentialsOption: 'serviceEndpoint'
     serverEndpoint: 'appcenter-mfadin-sampleios'
     appSlug: 'mfadin-microsoft.com/sampleios'
-    devices: 'iphon13'
+    devices: 'mfadin-microsoft.com/iphone13'
     localeOption: 'en_US'
     showDebugOutput: true
+    skipWaitingForResults: true
