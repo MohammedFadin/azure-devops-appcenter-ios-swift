@@ -26,13 +26,22 @@ steps:
     provProfileSecureFile: 'developmentprofileappcentermyiphone(2).mobileprovision'
 
 
+# - task: Xcode@5
+#   inputs:
+#     actions: 'build-for-testing'
+#     configuration: 'Debug'
+#     sdk: 'iphoneos'
+#     xcWorkspacePath: '*.xcworkspace'
+#     scheme: 'sampleapp-ios-swift'
+#     packageApp: false
+#     args: '-derivedDataPath $(build.artifactStagingDirectory)/DerivedData'
 
 - task: Xcode@5
   inputs:
     actions: 'build'
     scheme: 'sampleapp-ios-swift'
     sdk: 'iphoneos'
-    configuration: 'Release'
+    configuration: 'Debug'
     xcWorkspacePath: '*.xcworkspace'
     xcodeVersion: 'default'
     packageApp: true
@@ -67,13 +76,15 @@ steps:
     contents: '**/*.ipa'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la $(system.defaultworkingdirectory)'
+# - task: CopyFiles@2
+#   inputs:
+#     # sourceFolder: "$(system.defaultworkingdirectory)/archive"
+#     contents: '**/*.ipa'
+#     targetFolder: '$(Build.ArtifactStagingDirectory)/ipa'
 
 - task: CmdLine@2
   inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)'
+    script: 'ls -la $(system.defaultworkingdirectory)'
 
 
 - task: CmdLine@2
@@ -82,13 +93,16 @@ steps:
     
 - task: CmdLine@2
   inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Release-iphoneos'        
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'        
+
 
 - task: AppCenterTest@1
   inputs:
-    appFile: '/Users/runner/work/1/a/output/$(SDK)/$(Configuration)/sampleapp-ios-swift.ipa'
+    # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
+    appFile: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos/*.app'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
-    prepareTests: false
+    frameworkOption: 'xcuitest'
+    xcUITestBuildDirectory: '$(ProjectDir)/Build/Products/Debug-iphoneos'
     credentialsOption: 'serviceEndpoint'
     serverEndpoint: 'appcenter-mfadin-sampleios'
     appSlug: 'mfadin-microsoft.com/sampleios'
