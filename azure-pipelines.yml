@@ -27,6 +27,7 @@ steps:
 
 
 - task: Xcode@5
+  displayName: 'Build For Testing XCUITests'
   inputs:
     actions: 'build-for-testing'
     configuration: 'Debug'
@@ -40,6 +41,7 @@ steps:
     args: '-derivedDataPath $(Build.ArtifactStagingDirectory)/DerivedData'
 
 - task: Xcode@5
+  displayName: 'Build For Release'
   inputs:
     actions: 'build'
     configuration: 'Release'
@@ -63,23 +65,16 @@ steps:
     contents: '**/*.ipa'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la $(system.defaultworkingdirectory)'
-
-
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/' 
     
 - task: CmdLine@2
+  displayName: 'List DerivedData Folder'
   inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'        
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'
 
 
 - task: AppCenterTest@1
+  displayName: 'Run XCTests AppCenter Devices'
   inputs:
-    # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
     appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
     frameworkOption: 'xcuitest'
@@ -90,4 +85,4 @@ steps:
     devices: 'mfadin-microsoft.com/iphone13'
     localeOption: 'en_US'
     showDebugOutput: true
-    skipWaitingForResults: true
+    skipWaitingForResults: false
