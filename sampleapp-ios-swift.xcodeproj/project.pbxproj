@@ -390,6 +390,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
@@ -524,9 +525,10 @@
 				INFOPLIST_FILE = "sampleapp-ios-swiftUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fadin.appcenter.sampleapp.swift;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.fadin.appcenter.sampleapp.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "development-profile-appcenter-myiphone";
+				PROVISIONING_PROFILE_SPECIFIER = "appcenter sample app xctrunner";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
@@ -545,6 +547,7 @@
 				INFOPLIST_FILE = "sampleapp-ios-swiftUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fadin.appcenter.sampleapp.swift;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.fadin.appcenter.sampleapp.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
