@@ -86,10 +86,6 @@ steps:
   inputs:
     script: 'ls -la $(system.defaultworkingdirectory)'
 
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/ipa/output'
-
 
 - task: CmdLine@2
   inputs:
