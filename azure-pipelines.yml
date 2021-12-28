@@ -68,10 +68,6 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'ls -la $(system.defaultworkingdirectory)/archive'
-
-- task: CmdLine@2
-  inputs:
     script: 'ls -la $(system.defaultworkingdirectory)'
 
 - task: CmdLine@2
@@ -81,7 +77,7 @@ steps:
 - task: AppCenterTest@1
   inputs:
     # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
-    appFile: '$(system.defaultworkingdirectory)/archive/**/*.ipa'
+    appFile: '$(system.defaultworkingdirectory)/**/*.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/sampleapp-ios-swiftUITests'
     frameworkOption: 'xcuitest'
     credentialsOption: 'serviceEndpoint'
