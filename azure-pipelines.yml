@@ -89,10 +89,11 @@ steps:
     appFile: '/Users/runner/work/1/a/output/$(SDK)/$(Configuration)/sampleapp-ios-swift.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
     frameworkOption: 'xcuitest'
+    xcUITestBuildDirectory: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Release-iphoneos'
+    xcUITestIpaFile: '/Users/runner/work/1/a/output/$(SDK)/$(Configuration)/sampleapp-ios-swift.ipa'
     credentialsOption: 'serviceEndpoint'
     serverEndpoint: 'appcenter-mfadin-sampleios'
     appSlug: 'mfadin-microsoft.com/sampleios'
     devices: 'iphon13'
     localeOption: 'en_US'
-    xcUITestBuildDirectory: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Release-iphoneos'
     showDebugOutput: true
