@@ -33,43 +33,35 @@ steps:
     sdk: 'iphoneos'
     xcWorkspacePath: '*.xcworkspace'
     scheme: 'sampleapp-ios-swift'
-    packageApp: true
-    exportPath: '$(Build.ArtifactStagingDirectory)/release'
+    packageApp: false
+    # exportPath: '$(Build.ArtifactStagingDirectory)/release'
     signingOption: 'auto'
-    teamId: '7MFTHNSR79'
+    teamId: '$(MY-APPLE-TEAMID)'
     args: '-derivedDataPath $(Build.ArtifactStagingDirectory)/DerivedData'
 
-# - task: Xcode@5
-#   inputs:
-#     actions: 'build'
-#     configuration: 'Release'
-#     sdk: 'iphoneos'
-#     xcWorkspacePath: '*.xcworkspace'
-#     scheme: 'sampleapp-ios-swift'
-#     xcodeVersion: 'default'
-#     publishJUnitResults: false
-#     xcodeDeveloperDir: '/Applications/Xcode_13.1.app'    
-#     ## Packeging Specs
-#     packageApp: true
-#     exportPath: "$(Build.ArtifactStagingDirectory)/release"
-#     # archivePath: "$(system.defaultworkingdirectory)/archive"
-#     exportTeamId: '$(MY-APPLE-TEAMID)'
-#     teamId: '$(MY-APPLE-TEAMID)'
-#     signingOption: 'manual'
-#     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
-#     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
+- task: Xcode@5
+  inputs:
+    actions: 'build'
+    configuration: 'Release'
+    sdk: 'iphoneos'
+    xcWorkspacePath: '*.xcworkspace'
+    scheme: 'sampleapp-ios-swift'
+    xcodeVersion: 'default'
+    publishJUnitResults: false
+    xcodeDeveloperDir: '/Applications/Xcode_13.1.app'    
+    ## Packeging Specs
+    packageApp: true
+    exportPath: "$(Build.ArtifactStagingDirectory)/release"
+    # archivePath: "$(system.defaultworkingdirectory)/archive"
+    exportTeamId: '$(MY-APPLE-TEAMID)'
+    teamId: '$(MY-APPLE-TEAMID)'
+    signingOption: 'auto'
     
 - task: CopyFiles@2
   inputs:
     # sourceFolder: "$(system.defaultworkingdirectory)/archive"
     contents: '**/*.ipa'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
-
-- task: CopyFiles@2
-  inputs:
-    # sourceFolder: "$(system.defaultworkingdirectory)/archive"
-    contents: '**/*.ipa'
-    targetFolder: '$(Build.ArtifactStagingDirectory)/ipa'
 
 - task: CmdLine@2
   inputs:
