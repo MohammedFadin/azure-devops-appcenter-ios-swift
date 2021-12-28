@@ -25,6 +25,8 @@ steps:
     provisioningProfileLocation: 'secureFiles'
     provProfileSecureFile: 'developmentprofileappcentermyiphone(2).mobileprovision'
 
+
+
 - task: Xcode@5
   inputs:
     actions: 'clean build'
@@ -32,7 +34,7 @@ steps:
     sdk: 'iphoneos'
     xcWorkspacePath: '*.xcworkspace'
     scheme: 'sampleapp-ios-swift'
-    xcodeVersion: 'specifyPath'
+    xcodeVersion: 'default'
     publishJUnitResults: false
     xcodeDeveloperDir: '/Applications/Xcode_13.1.app'    
     ## Packeging Specs
@@ -41,7 +43,9 @@ steps:
     archivePath: "$(system.defaultworkingdirectory)/archive"
     exportTeamId: '$(MY-APPLE-TEAMID)'
     teamId: '$(MY-APPLE-TEAMID)'
-    signingOption: default
+    signingOption: 'manual'
+    signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
+    provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
     
 - task: CopyFiles@2
   inputs:
