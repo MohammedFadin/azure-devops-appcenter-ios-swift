@@ -81,9 +81,8 @@ steps:
 
 - task: AppCenterTest@1
   inputs:
-    # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
     appFile: '/Users/runner/work/1/a/output/$(SDK)/$(Configuration)/sampleapp-ios-swift.ipa'
-    artifactsDirectory: '$(Build.ArtifactStagingDirectory)/sampleapp-ios-swiftUITests'
+    artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
     frameworkOption: 'xcuitest'
     credentialsOption: 'serviceEndpoint'
     serverEndpoint: 'appcenter-mfadin-sampleios'
@@ -91,3 +90,12 @@ steps:
     devices: 'iphon13'
     localeOption: 'en_US'
     xcUITestBuildDirectory: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'
+    showDebugOutput: true
+- task: CmdLine@2
+  inputs:
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'    
+
+
+- task: CmdLine@2
+  inputs:
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/' 
