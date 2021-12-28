@@ -76,11 +76,11 @@ steps:
     contents: '**/*.ipa'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: CopyFiles@2
-  inputs:
-    # sourceFolder: "$(system.defaultworkingdirectory)/archive"
-    contents: '**/*.ipa'
-    targetFolder: '$(Build.ArtifactStagingDirectory)/ipa'
+# - task: CopyFiles@2
+#   inputs:
+#     # sourceFolder: "$(system.defaultworkingdirectory)/archive"
+#     contents: '**/*.ipa'
+#     targetFolder: '$(Build.ArtifactStagingDirectory)/ipa'
 
 - task: CmdLine@2
   inputs:
