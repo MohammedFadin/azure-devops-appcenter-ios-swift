@@ -29,17 +29,15 @@ steps:
 - task: Xcode@5
   inputs:
     actions: 'build-for-testing'
-    scheme: 'sampleapp-ios-swift'
-    sdk: 'iphoneos'
     configuration: 'Debug'
+    sdk: 'iphoneos'
     xcWorkspacePath: '*.xcworkspace'
-    xcodeVersion: 'default'
+    scheme: 'sampleapp-ios-swift'
     packageApp: true
-    exportPath: "$(Build.ArtifactStagingDirectory)/release"
-    signingOption: 'manual'
-    signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
-    provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'    
-    args: '-derivedDataPath $(Build.ArtifactStagingDirectory)/DerivedData'    
+    exportPath: '$(Build.ArtifactStagingDirectory)/release'
+    signingOption: 'auto'
+    teamId: '7MFTHNSR79'
+    args: '-derivedDataPath $(Build.ArtifactStagingDirectory)/DerivedData'
 
 # - task: Xcode@5
 #   inputs:
