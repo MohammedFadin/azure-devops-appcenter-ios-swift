@@ -18,7 +18,7 @@ steps:
   inputs:
     certSecureFile: 'apple-dev-certificate.p12'
     certPwd: '$(MYCERTPASSWORD)' #MyAppiOSDistributionCert
-    # keychain: 'temp'
+    keychain: 'temp'
 
 - task: InstallAppleProvisioningProfile@1
   inputs:
@@ -29,7 +29,7 @@ steps:
 
 - task: Xcode@5
   inputs:
-    actions: 'clean build'
+    actions: 'build'
     configuration: 'Release'
     sdk: 'iphoneos'
     xcWorkspacePath: '*.xcworkspace'
