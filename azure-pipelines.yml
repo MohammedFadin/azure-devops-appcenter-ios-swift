@@ -76,13 +76,19 @@ steps:
     contents: '**/*.ipa'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
 
+- task: CopyFiles@2
+  inputs:
+    # sourceFolder: "$(system.defaultworkingdirectory)/archive"
+    contents: '**/*.ipa'
+    targetFolder: '$(Build.ArtifactStagingDirectory)/ipa'
+
 - task: CmdLine@2
   inputs:
     script: 'ls -la $(system.defaultworkingdirectory)'
 
 - task: CmdLine@2
   inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)'
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/ipa'
 
 
 - task: CmdLine@2
@@ -100,7 +106,7 @@ steps:
 
 - task: AppCenterTest@1
   inputs:
-    appFile: '$(Build.ArtifactStagingDirectory)/*.ipa'
+    appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
     frameworkOption: 'xcuitest'
     xcUITestBuildDirectory: '$(ProjectDir)/Build/Products/Debug-iphoneos'
