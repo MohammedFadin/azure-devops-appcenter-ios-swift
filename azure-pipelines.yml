@@ -20,10 +20,10 @@ steps:
     certPwd: '$(MYCERTPASSWORD)' #MyAppiOSDistributionCert
     keychain: 'temp'
 
-- task: InstallAppleProvisioningProfile@1
-  inputs:
-    provisioningProfileLocation: 'secureFiles'
-    provProfileSecureFile: 'appcenter_sample_app_xctrunner.mobileprovision'
+# - task: InstallAppleProvisioningProfile@1
+#   inputs:
+#     provisioningProfileLocation: 'secureFiles'
+#     provProfileSecureFile: 'appcenter_sample_app_xctrunner.mobileprovision'
 
 
 - task: Xcode@5
