@@ -79,6 +79,19 @@ steps:
   inputs:
     script: 'ls -la /Users/runner/work/1/a/output/$(SDK)/$(Configuration)'
 
+- task: CmdLine@2
+  inputs:
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'    
+
+
+- task: CmdLine@2
+  inputs:
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/' 
+    
+- task: CmdLine@2
+  inputs:
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Release-iphoneos'        
+
 - task: AppCenterTest@1
   inputs:
     appFile: '/Users/runner/work/1/a/output/$(SDK)/$(Configuration)/sampleapp-ios-swift.ipa'
@@ -89,13 +102,5 @@ steps:
     appSlug: 'mfadin-microsoft.com/sampleios'
     devices: 'iphon13'
     localeOption: 'en_US'
-    xcUITestBuildDirectory: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'
+    xcUITestBuildDirectory: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Release-iphoneos'
     showDebugOutput: true
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'    
-
-
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/' 
