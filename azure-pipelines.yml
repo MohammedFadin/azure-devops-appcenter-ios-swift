@@ -99,7 +99,7 @@ steps:
 - task: AppCenterTest@1
   inputs:
     # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
-    appFile: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos/sampleapp-ios-swift.app'
+    appFile: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos/*.app'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
     frameworkOption: 'xcuitest'
     xcUITestBuildDirectory: '$(ProjectDir)/Build/Products/Debug-iphoneos'
