@@ -46,6 +46,8 @@ steps:
     xcodeVersion: 'default'
     packageApp: false
     signingOption: 'manual'
+    signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
+    provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'    
     args: '-derivedDataPath $(Build.ArtifactStagingDirectory)/DerivedData'    
 
 - task: Xcode@5
