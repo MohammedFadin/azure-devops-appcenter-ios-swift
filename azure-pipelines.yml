@@ -23,18 +23,8 @@ steps:
 - task: InstallAppleProvisioningProfile@1
   inputs:
     provisioningProfileLocation: 'secureFiles'
-    provProfileSecureFile: 'developmentprofileappcentermyiphone(2).mobileprovision'
+    provProfileSecureFile: 'appcenter_sample_app_xctrunner.mobileprovision'
 
-
-# - task: Xcode@5
-#   inputs:
-#     actions: 'build-for-testing'
-#     configuration: 'Debug'
-#     sdk: 'iphoneos'
-#     xcWorkspacePath: '*.xcworkspace'
-#     scheme: 'sampleapp-ios-swift'
-#     packageApp: false
-#     args: '-derivedDataPath $(build.artifactStagingDirectory)/DerivedData'
 
 - task: Xcode@5
   inputs:
@@ -49,6 +39,11 @@ steps:
     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'    
     args: '-derivedDataPath $(Build.ArtifactStagingDirectory)/DerivedData'    
+
+- task: InstallAppleProvisioningProfile@1
+  inputs:
+    provisioningProfileLocation: 'secureFiles'
+    provProfileSecureFile: 'developmentprofileappcentermyiphone(2).mobileprovision'
 
 - task: Xcode@5
   inputs:
