@@ -75,14 +75,6 @@ steps:
   inputs:
     script: 'ls -la $(Build.ArtifactStagingDirectory)'
 
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la /Users/runner/work/1/a/output/$(SDK)/$(Configuration)'
-
-- task: CmdLine@2
-  inputs:
-    script: 'ls -la $(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'    
-
 
 - task: CmdLine@2
   inputs:
