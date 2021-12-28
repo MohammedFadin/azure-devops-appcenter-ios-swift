@@ -51,7 +51,7 @@ steps:
     xcodeDeveloperDir: '/Applications/Xcode_13.1.app'    
     ## Packeging Specs
     packageApp: true
-    exportPath: "$(Build.ArtifactStagingDirectory)/release"
+    # exportPath: "$(Build.ArtifactStagingDirectory)/release"
     # archivePath: "$(system.defaultworkingdirectory)/archive"
     exportTeamId: '$(MY-APPLE-TEAMID)'
     teamId: '$(MY-APPLE-TEAMID)'
@@ -80,7 +80,7 @@ steps:
 - task: AppCenterTest@1
   inputs:
     # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
-    appFile: '$(Build.ArtifactStagingDirectory)/*.ipa'
+    appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
     frameworkOption: 'xcuitest'
     xcUITestBuildDirectory: '$(Build.ArtifactStagingDirectory)/DerivedData/Build/Products/Debug-iphoneos'
