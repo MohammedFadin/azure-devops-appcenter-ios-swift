@@ -73,11 +73,15 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'ls -la $(Build.ArtifactStagingDirectory)'
-    
+
+- task: CmdLine@2
+  inputs:
+    script: 'ls -la $(Build.ArtifactStagingDirectory)/**/*.ipa'
+
 - task: AppCenterTest@1
   inputs:
     # appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
-    appFile: '$(system.defaultworkingdirectory)/**/*.ipa'
+    appFile: '$(Build.ArtifactStagingDirectory)/**/*.ipa'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/sampleapp-ios-swiftUITests'
     frameworkOption: 'xcuitest'
     credentialsOption: 'serviceEndpoint'
