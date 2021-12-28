@@ -523,10 +523,10 @@
 				DEVELOPMENT_TEAM = 7MFTHNSR79;
 				INFOPLIST_FILE = "sampleapp-ios-swiftUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fadin.appcenter.sampleapp.swift.xctrunner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fadin.appcenter.sampleapp.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "appcenter sample app xctrunner";
+				PROVISIONING_PROFILE_SPECIFIER = "development-profile-appcenter-myiphone";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
@@ -544,7 +544,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "sampleapp-ios-swiftUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fadin.appcenter.sampleapp.swift.xctrunner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fadin.appcenter.sampleapp.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
