@@ -1,6 +1,6 @@
 # Azure DevOps Pipeline for XCode Projects + AppCenter on Real Devices Testing
 
-The iOS application in this repository and its corresponding tutorials will help you quickly and easily onboard to Visual Studio App Center.
+This project has been created for demonstration purposes only for Microsoft Azure users who are looking for a sample demonstration of automating XCode projects Build, Test and deploy using Azure DevOps and Visual Studio AppCenter.
 
 ## About this repository
 
@@ -13,7 +13,7 @@ The App Center SDK modules are already integrated within the application. Simply
 | App Center      | [![Build status](https://build.appcenter.ms/v0.1/apps/45f31a4b-96a1-4c49-9c26-b2726e00a33d/branches/master/badge)](https://appcenter.ms)                                                                                                                           |
 | Azure Pipelines | [![Build Status](https://dev.azure.com/msmobilecenter/Mobile-Center/_apis/build/status/sampleapp/microsoft.appcenter-sampleapp-ios-swift?branchName=master)](https://dev.azure.com/msmobilecenter/Mobile-Center/_build/latest?definitionId=3726&branchName=master) |
 
-## Build the sample app
+## Build the app
 
 After forking the repository, you'll need to install CocoaPods to build the app.
 
@@ -31,12 +31,7 @@ Open the .xcworkspace. The app can now build and run. You can learn to use the s
 
 ## Codesigning
 
-_Codesigning is optional, but recommended._
-
-Codesigning will allow you to deploy this sample app to your device. The **Build** and **Distribute** tutorials recommend that you codesign.
-
-When creating a new App ID for this sample app, be sure to check the **
-Notifications** service under the **App Services** section.
+Auto Codesigning have been used for this project using my iOS team profile. You have to upload your certificate + team provisioning profile which was used for the codesigning "Auto".
 
 To sign the app in Xcode:
 
@@ -45,17 +40,22 @@ To sign the app in Xcode:
 3. Under **Identity**, edit the **Bundle Identifier** to match the app ID.
 4. Import and select the provisioning profile under **Signing (Debug)** and **Signing (Release)**.
 
-## Tutorial links
+## Useful commands for local Appcenter testing for this project:
 
-Begin with the [Getting Started](https://docs.microsoft.com/en-us/mobile-center/quickstarts/ios/getting-started) tutorial. After you've completed that, you can do the rest in the order below, or choose a specific tutorial to follow.
+```
+xcrun xcodebuild build-for-testing \
+  -configuration Debug \
+  -workspace sampleapp-ios-swift.xcworkspace\
+  -sdk iphoneos \
+  -scheme sampleapp-ios-swift \
+  -derivedDataPath DerivedData    
+```
 
-## Contents
-
-| Tutorial                                                                                      | Description                                |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [Getting Started](https://docs.microsoft.com/en-us/appcenter/quickstarts/ios/getting-started) | Set up the app                             |
-| [Build](https://docs.microsoft.com/en-us/appcenter/quickstarts/ios/build)                     | Build the app                              |
-| [Test](https://docs.microsoft.com/en-us/appcenter/quickstarts/ios/test)                       | Run automated UI tests on real devices     |
-| [Distribute](https://docs.microsoft.com/en-us/appcenter/quickstarts/ios/distribute)           | Distribute application to a group of users |
-| [Crashes](https://docs.microsoft.com/en-us/appcenter/quickstarts/ios/crashes)                 | Monitor application crashes                |
-| [Analytics](https://docs.microsoft.com/en-us/appcenter/quickstarts/ios/analytics)             | View user analytics                        |
+```
+appcenter test run xcuitest \
+  --app "mfadin-microsoft.com/sampleios" \
+  --devices "mfadin-microsoft.com/iphone13" \
+  --test-series "main" \
+  --locale "en_US" \
+  --build-dir DerivedData/Build/Products/Debug-iphoneos
+```
